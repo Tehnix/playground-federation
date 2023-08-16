@@ -41,3 +41,10 @@ And then start the router that pieces them together:
 ```bash
 $ ./router --config router.yaml --supergraph=supergraph.graphql --dev --hot-reload
 ```
+
+
+# Resources
+
+- [Federation quickstart](https://www.apollographql.com/docs/federation/quickstart/local-subgraphs)
+- [Configuring the router](https://www.apollographql.com/docs/router/configuration/overview/)
+- [What are entities in Federated GraphQL](https://www.apollographql.com/docs/federation/entities/#defining-an-entity)
