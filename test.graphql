@@ -1,0 +1,28 @@
+query ExampleQuery {
+  # Composed resolvers
+  composeMe: me {
+    name
+    reviews {
+      id
+      body
+    }
+    purchases {
+      id
+      name
+    }
+  }
+
+  # Root level resolvers
+  me {
+    id
+    name
+  }
+  products {
+    id
+    name
+  }
+  reviews {
+    id
+    body
+  }
+}
