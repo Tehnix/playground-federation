@@ -9,6 +9,9 @@ query ExampleQuery {
     purchases {
       id
       name
+      reviews {
+        body
+      }
     }
   }
 
