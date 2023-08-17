@@ -8,10 +8,7 @@ import { buildSubgraphSchema } from "@apollo/subgraph";
  */
 const typeDefs = gql`
   extend schema
-    @link(
-      url: "https://specs.apollo.dev/federation/v2.0"
-      import: ["@key", "@shareable"]
-    )
+    @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
 
   type Query {
     me: User
@@ -35,6 +32,11 @@ const usersDatabase = [
   { id: "5", name: "Agnes" },
 ];
 
+/**
+ * Fetch users by id.
+ *
+ * NOTE: A real-world implementation would need a dataloader to avoid the N+1 problem.
+ */
 const fetchUserById = async (id) =>
   usersDatabase.find((user) => user.id === id);
 

@@ -10,7 +10,7 @@ const typeDefs = gql`
   extend schema
     @link(
       url: "https://specs.apollo.dev/federation/v2.0"
-      import: ["@key", "@shareable"]
+      import: ["@key", "@requires", "@external"]
     )
 
   type Query {
@@ -27,6 +27,8 @@ const typeDefs = gql`
 
   type User @key(fields: "id") {
     id: ID!
+    name: String @external
+    greeting: String @requires(fields: "name")
     reviews: [Review]
   }
 
@@ -66,6 +68,11 @@ const reviewDatabase = [
   },
 ];
 
+/**
+ * Fetch reviews by id and various other ways.
+ *
+ * NOTE: A real-world implementation would need a dataloader to avoid the N+1 problem.
+ */
 const fetchReviewById = async (id) =>
   reviewDatabase.filter((review) => review.id === id);
 
@@ -104,8 +111,16 @@ const resolvers = {
       console.log(`[reviews] Resolving reference for user by id: ${user.id}`);
       const reviews = await fetchReviewByUser(user.id);
       return {
+        // We spread the user object here to give our computed fields access to the user's data that
+        // we required via the @requires directive.
+        ...user,
         reviews,
       };
+    },
+
+    greeting: (user) => {
+      console.log(JSON.stringify(user, null, 2));
+      return `Hello ${user.name}!`;
     },
   },
 
