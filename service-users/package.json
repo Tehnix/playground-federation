@@ -22,6 +22,7 @@
   "dependencies": {
     "@apollo/server": "^4.9.1",
     "@apollo/subgraph": "^2.4.12",
+    "dataloader": "^2.2.2",
     "graphql-tag": "^2.12.6"
   }
 }
