@@ -2,27 +2,25 @@
   "name": "reviews",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "src/main.ts",
   "scripts": {
-    "dev": "nodemon",
-    "build": "etsc",
-    "start": "node dist/server.js"
+    "dev": "bun --hot src/main.ts",
+    "build": "bun build ./src/main.ts --target=node --outdir ./dist",
+    "start": "bun src/main.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@luckycatfactory/esbuild-graphql-loader": "^3.8.1",
     "@types/node": "^20.5.0",
-    "esbuild": "^0.19.2",
-    "esbuild-node-tsc": "^2.0.5",
-    "nodemon": "^3.0.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5",
+    "bun-types": "latest"
   },
   "dependencies": {
     "@apollo/server": "^4.9.1",
     "@apollo/subgraph": "^2.4.12",
     "dataloader": "^2.2.2",
+    "graphql": "^16.8.0",
     "graphql-tag": "^2.12.6"
   }
 }

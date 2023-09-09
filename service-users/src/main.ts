@@ -25,7 +25,7 @@ const typeDefs = gql`
  * A little fake database for demo purposes.
  */
 const usersDatabase = [
-  { id: "1", name: "John" },
+  { id: "1", name: "Johnnie" },
   { id: "2", name: "Annie" },
   { id: "3", name: "Gerald" },
   { id: "4", name: "Bobby" },
@@ -37,7 +37,7 @@ const usersDatabase = [
  *
  * NOTE: A real-world implementation would need a dataloader to avoid the N+1 problem.
  */
-const fetchUserById = async (id) =>
+const fetchUserById = async (id: string) =>
   usersDatabase.find((user) => user.id === id);
 
 /**
@@ -55,7 +55,7 @@ const resolvers = {
 
   // We define how another subgraph can resolve a user.
   User: {
-    __resolveReference(user) {
+    __resolveReference(user: { id: string }) {
       console.log(`[users] Resolving reference for user by id: ${user.id}`);
       return fetchUserById(user.id);
     },

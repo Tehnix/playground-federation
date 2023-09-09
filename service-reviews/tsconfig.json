@@ -1,25 +1,29 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "allowJs": true,
-    "removeComments": true,
-    "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types"],
-    "sourceMap": true,
-    "outDir": "dist",
-    "strict": true,
+    // add Bun type definitions
+    "types": ["bun-types"],
+
+    // enable latest features
     "lib": ["esnext"],
-    "baseUrl": ".",
+    "module": "esnext",
+    "target": "esnext",
+
+    // if TS 5.x+
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+
+    "jsx": "react-jsx", // support JSX
+    "allowJs": true, // allow importing `.js` from `.ts`
+    "esModuleInterop": true, // allow default imports for CommonJS modules
+
+    // best practices
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "moduleResolution": "node",
     "skipLibCheck": true,
+
+    // while prototyping
     "noImplicitAny": false
-  },
-  "files": ["src/graphql.d.ts"],
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  }
 }

@@ -13,21 +13,30 @@ and the router itself:
 curl -sSL https://router.apollo.dev/download/nix/latest | sh
 ```
 
+and finally, we'll be using bun to speed up/simplify running our services:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
 You first start the three subgraphs:
 
 ```bash
 $ cd service-users
-$ npm run dev
+$ bun install
+$ bun dev
 ```
 
 ```bash
 $ cd service-reviews
-$ npm run dev
+$ bun install
+$ bun dev
 ```
 
 ```bash
 $ cd service-products
-$ npm run dev
+$ bun install
+$ bun dev
 ```
 
 We can then compose our subgraphs:
